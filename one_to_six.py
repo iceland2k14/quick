@@ -3,7 +3,8 @@
 
 @author: iceland
 """
-
+import bit
+import bitcoinlib
 ###############################################################################
 # 6 Pubkeys are
 # Pubkey = [x,y]  [x*beta%p, y]  [x*beta2%p, y] [x,p-y]  [x*beta%p, p-y]  [x*beta2%p, p-y]
@@ -44,7 +45,45 @@ def one_to_6privatekey(pvk_hex):
     print('PVK5 : ', hex(N-pvk*lmda%N)[2:].zfill(64))
     print('PVK6 : ', hex(N-pvk*lmda2%N)[2:].zfill(64))
 
+def pvk_to_24address(pvk_hex):
+    pvk = int(pvk_hex, 16)
+    print('PVK1 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk)._pk.public_key.format(compressed=True)))
+    print('PVK1 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk)._pk.public_key.format(compressed=False)))
+    print('PVK1 BTC Address : [Segwit      ]  ', bit.Key.from_int(pvk).segwit_address)
+    print('PVK1 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(pvk).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+    print('PVK2 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk*lmda%N)._pk.public_key.format(compressed=True)))
+    print('PVK2 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk*lmda%N)._pk.public_key.format(compressed=False)))
+    print('PVK2 BTC Address : [Segwit      ]  ', bit.Key.from_int(pvk*lmda%N).segwit_address)
+    print('PVK2 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(pvk*lmda%N).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+    print('PVK3 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk*lmda2%N)._pk.public_key.format(compressed=True)))
+    print('PVK3 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(pvk*lmda2%N)._pk.public_key.format(compressed=False)))
+    print('PVK3 BTC Address : [Segwit      ]  ', bit.Key.from_int(pvk*lmda2%N).segwit_address)
+    print('PVK3 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(pvk*lmda2%N).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+    print('PVK4 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk)._pk.public_key.format(compressed=True)))
+    print('PVK4 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk)._pk.public_key.format(compressed=False)))
+    print('PVK4 BTC Address : [Segwit      ]  ', bit.Key.from_int(N-pvk).segwit_address)
+    print('PVK4 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(N-pvk).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+    print('PVK5 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk*lmda%N)._pk.public_key.format(compressed=True)))
+    print('PVK5 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk*lmda%N)._pk.public_key.format(compressed=False)))
+    print('PVK5 BTC Address : [Segwit      ]  ', bit.Key.from_int(N-pvk*lmda%N).segwit_address)
+    print('PVK5 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(N-pvk*lmda%N).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+    print('PVK6 BTC Address : [Compressed  ]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk*lmda2%N)._pk.public_key.format(compressed=True)))
+    print('PVK6 BTC Address : [Uncompressed]  ', bit.format.public_key_to_address(bit.Key.from_int(N-pvk*lmda2%N)._pk.public_key.format(compressed=False)))
+    print('PVK6 BTC Address : [Segwit      ]  ', bit.Key.from_int(N-pvk*lmda2%N).segwit_address)
+    print('PVK6 BTC Address : [Bech32      ]  ', bitcoinlib.keys.Address(bit.Key.from_int(N-pvk*lmda2%N).public_key.hex(),encoding='bech32',script_type='p2wpkh').address)
+    
+
+def do_all(pvk_hex):
+    one_to_6privatekey(pvk_hex)
+    one_to_6pubkey(bit.Key.from_hex(pvk_hex)._pk.public_key.format(compressed=False).hex())
+    pvk_to_24address(pvk_hex)
 ###############################################################################
 ## Example
-one_to_6privatekey('08')
-one_to_6pubkey('042f01e5e15cca351daff3843fb70f3c2f0a1bdd05e5af888a67784ef3e10a2a015c4da8a741539949293d082a132d13b4c2e213d6ba5b7617b5da2cb76cbde904')
+# one_to_6privatekey('08')
+# one_to_6pubkey('042f01e5e15cca351daff3843fb70f3c2f0a1bdd05e5af888a67784ef3e10a2a015c4da8a741539949293d082a132d13b4c2e213d6ba5b7617b5da2cb76cbde904')
+do_all('1ce')
