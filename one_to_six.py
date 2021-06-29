@@ -25,16 +25,28 @@ lmda = 0x5363ad4cc05c30e0a5261c028812645a122e22ea20816678df02967c1b23bd72
 lmda2 = 0xac9c52b33fa3cf1f5ad9e3fd77ed9ba4a880b9fc8ec739c2e0cfc810b51283ce      # lmda*lmda
 
 ###############################################################################
-def one_to_6pubkey(upub_hex):
-    if len(upub_hex) < 70 : print('Please provide full Uncompressed Pubkey in hex'); exit()
-    x = int(upub_hex[2:66],16)
-    y = int(upub_hex[66:],16)
-    print('Pubkey1 : ', '04'+hex(x)[2:].zfill(64)+hex(y)[2:].zfill(64))
-    print('Pubkey2 : ', '04'+hex(x*beta%p)[2:].zfill(64)+hex(y)[2:].zfill(64))
-    print('Pubkey3 : ', '04'+hex(x*beta2%p)[2:].zfill(64)+hex(y)[2:].zfill(64))
-    print('Pubkey4 : ', '04'+hex(x)[2:].zfill(64)+hex(p-y)[2:].zfill(64))
-    print('Pubkey5 : ', '04'+hex(x*beta%p)[2:].zfill(64)+hex(p-y)[2:].zfill(64))
-    print('Pubkey6 : ', '04'+hex(x*beta2%p)[2:].zfill(64)+hex(p-y)[2:].zfill(64))
+def one_to_6upubkey(pub_hex):
+    x = int(pub_hex[2:66],16)
+    if len(pub_hex) < 70: y = bit.format.x_to_y(x, int(pub_hex[:2],16)%2)
+    else: y = int(pub_hex[66:],16)
+    print('Pubkey1 : ', '04'+hex(x)[2:].zfill(64) + hex(y)[2:].zfill(64))
+    print('Pubkey2 : ', '04'+hex(x*beta%p)[2:].zfill(64) + hex(y)[2:].zfill(64))
+    print('Pubkey3 : ', '04'+hex(x*beta2%p)[2:].zfill(64) + hex(y)[2:].zfill(64))
+    print('Pubkey4 : ', '04'+hex(x)[2:].zfill(64) + hex(p-y)[2:].zfill(64))
+    print('Pubkey5 : ', '04'+hex(x*beta%p)[2:].zfill(64) + hex(p-y)[2:].zfill(64))
+    print('Pubkey6 : ', '04'+hex(x*beta2%p)[2:].zfill(64) + hex(p-y)[2:].zfill(64))
+    
+def one_to_6cpubkey(pub_hex):
+    x = int(pub_hex[2:66],16)
+    if len(pub_hex) < 70: y = bit.format.x_to_y(x, int(pub_hex[:2],16)%2)
+    else: y = int(pub_hex[66:],16)
+    prefix = 2
+    print('Pubkey1 : ', str(prefix+(y%2)).zfill(2) + hex(x)[2:].zfill(64))
+    print('Pubkey2 : ', str(prefix+(y%2)).zfill(2) + hex(x*beta%p)[2:].zfill(64))
+    print('Pubkey3 : ', str(prefix+(y%2)).zfill(2) + hex(x*beta2%p)[2:].zfill(64))
+    print('Pubkey4 : ', str(prefix+((p-y)%2)).zfill(2) + hex(x)[2:].zfill(64))
+    print('Pubkey5 : ', str(prefix+((p-y)%2)).zfill(2) + hex(x*beta%p)[2:].zfill(64))
+    print('Pubkey6 : ', str(prefix+((p-y)%2)).zfill(2) + hex(x*beta2%p)[2:].zfill(64))
 
 def one_to_6privatekey(pvk_hex):
     pvk = int(pvk_hex,16)
@@ -44,6 +56,24 @@ def one_to_6privatekey(pvk_hex):
     print('PVK4 : ', hex(N-pvk)[2:].zfill(64))
     print('PVK5 : ', hex(N-pvk*lmda%N)[2:].zfill(64))
     print('PVK6 : ', hex(N-pvk*lmda2%N)[2:].zfill(64))
+    
+def pvk_to_6cpub(pvk_hex):
+    pvk = int(pvk_hex,16)
+    print('C Pubkey1 : ', bit.Key.from_int(pvk)._pk.public_key.format(compressed=True).hex())
+    print('C Pubkey2 : ', bit.Key.from_int(pvk*lmda%N)._pk.public_key.format(compressed=True).hex())
+    print('C Pubkey3 : ', bit.Key.from_int(pvk*lmda2%N)._pk.public_key.format(compressed=True).hex())
+    print('C Pubkey4 : ', bit.Key.from_int(N-pvk)._pk.public_key.format(compressed=True).hex())
+    print('C Pubkey5 : ', bit.Key.from_int(N-pvk*lmda%N)._pk.public_key.format(compressed=True).hex())
+    print('C Pubkey6 : ', bit.Key.from_int(N-pvk*lmda2%N)._pk.public_key.format(compressed=True).hex())
+    
+def pvk_to_6upub(pvk_hex):
+    pvk = int(pvk_hex,16)
+    print('U Pubkey1 : ', bit.Key.from_int(pvk)._pk.public_key.format(compressed=False).hex())
+    print('U Pubkey2 : ', bit.Key.from_int(pvk*lmda%N)._pk.public_key.format(compressed=False).hex())
+    print('U Pubkey3 : ', bit.Key.from_int(pvk*lmda2%N)._pk.public_key.format(compressed=False).hex())
+    print('U Pubkey4 : ', bit.Key.from_int(N-pvk)._pk.public_key.format(compressed=False).hex())
+    print('U Pubkey5 : ', bit.Key.from_int(N-pvk*lmda%N)._pk.public_key.format(compressed=False).hex())
+    print('U Pubkey6 : ', bit.Key.from_int(N-pvk*lmda2%N)._pk.public_key.format(compressed=False).hex())
 
 def pvk_to_24address(pvk_hex):
     pvk = int(pvk_hex, 16)
@@ -80,10 +110,13 @@ def pvk_to_24address(pvk_hex):
 
 def do_all(pvk_hex):
     one_to_6privatekey(pvk_hex)
-    one_to_6pubkey(bit.Key.from_hex(pvk_hex)._pk.public_key.format(compressed=False).hex())
+#    one_to_6upubkey(bit.Key.from_hex(pvk_hex)._pk.public_key.format(compressed=False).hex())
+#    one_to_6cpubkey(bit.Key.from_hex(pvk_hex)._pk.public_key.format(compressed=False).hex())
+    pvk_to_6cpub(pvk_hex)
+    pvk_to_6upub(pvk_hex)
     pvk_to_24address(pvk_hex)
 ###############################################################################
 ## Example
 # one_to_6privatekey('08')
-# one_to_6pubkey('042f01e5e15cca351daff3843fb70f3c2f0a1bdd05e5af888a67784ef3e10a2a015c4da8a741539949293d082a132d13b4c2e213d6ba5b7617b5da2cb76cbde904')
+# one_to_6upubkey('042f01e5e15cca351daff3843fb70f3c2f0a1bdd05e5af888a67784ef3e10a2a015c4da8a741539949293d082a132d13b4c2e213d6ba5b7617b5da2cb76cbde904')
 do_all('1ce')
