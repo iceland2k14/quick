@@ -1,7 +1,10 @@
 # One to six
 This script can use endomorphism and Symmetry used in secp256k1 curve of ECDSA.  
-Given 1 Pubkey, Print all 6 Pubkey.   
+Given 1 Pubkey (Compressed or Uncompressed), Print all 6 Uncompressed Pubkey.   
+Given 1 Pubkey (Compressed or Uncompressed), Print all 6 Compressed Pubkey.   
 Given 1 Privatekey, Print all 6 Privatekey.  
+Given 1 Privatekey, Print all 6 Uncompressed Pubkey.  
+Given 1 Privatekey, Print all 6 Compressed Pubkey.  
 Given 1 Privatekey, Print all 24 BTC Address.
 
 ```
@@ -12,12 +15,18 @@ PVK3 :  821d3f7cd99fca95f539736e6ecee4b34de1498aba4f951bae6a3115d58097cd
 PVK4 :  fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0363f73
 PVK5 :  821d3f7cd99fca95f539736e6ecee4b34de1498aba4f951bae6a3115d580999b
 PVK6 :  7de2c0832660356a0ac68c9191311b4b6ccd935bf4f90b2011682d76fab5a974
-Pubkey1 :  0457eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f82db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
-Pubkey2 :  04b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be82db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
-Pubkey3 :  04f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d97182db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
-Pubkey4 :  0457eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f7d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
-Pubkey5 :  04b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be7d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
-Pubkey6 :  04f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d9717d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
+C Pubkey1 :  0257eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f
+C Pubkey2 :  02b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be
+C Pubkey3 :  02f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d971
+C Pubkey4 :  0357eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f
+C Pubkey5 :  03b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be
+C Pubkey6 :  03f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d971
+U Pubkey1 :  0457eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f82db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
+U Pubkey2 :  04b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be82db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
+U Pubkey3 :  04f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d97182db2be0286f2ba09aefdf2898b87830145c3c656ef5b9ce2321db14ea2a5bc6
+U Pubkey4 :  0457eaa919a8428f13c04b336ac4e2d15ab4b29346bce2383a6269a8de20457a2f7d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
+U Pubkey5 :  04b57732abbb0b2ab3bd3cf0361e3b22e7b422bf6200619426e078b6ff4e84a4be7d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
+U Pubkey6 :  04f29e243a9cb246388277dc5f1ce20bbd972aad5742bc339ebd1da0209135d9717d24d41fd790d45f651020d7674787cfeba3c39a910a4631dcde24ea15d5a069
 PVK1 BTC Address : [Compressed  ]   14KoLerqk5VLjyrRZyWAqnxSsCzGFAcwK5
 PVK1 BTC Address : [Uncompressed]   13jYGadig7f2hu8Dfzj6AeG2uFefy66MEH
 PVK1 BTC Address : [Segwit      ]   3B4tteAzQ8c7NdthY5moqHNdAMvkU7hJh2
