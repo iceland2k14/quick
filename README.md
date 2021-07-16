@@ -52,3 +52,28 @@ PVK6 BTC Address : [Uncompressed]   1HMddELooUwMuRTtVaUrG7tSTNsfnjXL5u
 PVK6 BTC Address : [Segwit      ]   3HVpNktWqUmAoVXapSG3t4QVaPMzaX6FTK
 PVK6 BTC Address : [Bech32      ]   bc1qm89j8ynd52gvnckgex4qy332lw3uyahq2ztcqa
 ```
+
+# Pubkey Subtract
+This script Creates many Subtracted Pubkeys with a predictable random method using SHA256 function.  
+Number of pubkeys in the outputs can be specified along with the bit range.  
+A fixed seed is used to find the constant used to subtract continuously.  
+If privatekey of any one of the pubkey is found then the Privatekey of original pubkey can be traced back using the same predictable random offset values.  
+Output can be uncompressed pubkey, compressed pubkey or xpoint for either binary file or text file.  
+```
+(base) C:\anaconda3>python PubSub.py 02CEB6CBBCDBDF5EF7150682150F4CE2C6F4807B349827DCDBDD1F2EFA885A2630 100000 120 keysub120.txt upub
+[+] Detecting output file extension. Output will be written as Text File
+[-] Completed in 2.49 secs #  100000
+```
+
+# Pubkey Divide
+This script Creates many Divided Pubkeys with the bit reduction specified.  
+The division is achieved using the modular inverse of the scalar.  
+At least 1 of the Output pubkeys with have the reduced bit range specified in the argument.  
+- Usage > To decrese the Puzzle #120 bit range by 5 to make it 115 bit pubkey. out of those 32 at least 1 will be 115 bit.  
+```
+(base) C:\anaconda3>python PubDiv.py 02CEB6CBBCDBDF5EF7150682150F4CE2C6F4807B349827DCDBDD1F2EFA885A2630 5 keydiv_bit5.txt
+[+] Result will write Total 32 pubkeys in the Output File size Approx. [0.004 MB]
+[+] Finished Total DivKeys #  32
+[+] Completed in 0.24 sec
+```
+
