@@ -77,3 +77,34 @@ At least 1 of the Output pubkeys with have the reduced bit range specified in th
 [+] Completed in 0.24 sec
 ```
 
+# Small Subgroup Privatekey Search
+This script Search for Privatekey created in a small subgroup starting from any high bit random number.  
+It searches offline for btc address (4 types [C][U][3][bc]) for collision from a input address file.  
+```
+(base) C:\anaconda3>python small_subgroup.py
+[+] Program Starting ... Please Wait
+882 Legacy BTC, 498 Segwit BTC, 330 bech32 BTC,  address found in the file
+
+[+] Starting search for the subgroup : 0x66f5232619a504f227979d87b5345f120a2db0f8cb633f20eecaa9bebdc7
+[+] Completed :  160000 [C] 1CE2Xmkeygq1x8f4q5MNn4VRs9VMnnCSTk [U] 1GRaRCn3E5Gp6yU48bwmdxYSbjMAuNntVx [3] 3J9eo2LB5gWvQyYtUhZPmZPD1VgwMQTC4n [bc] bc1q0vsprx34qqps49p5udpxda6xhpx7kt2r5clx8t
+[+] Starting search for the subgroup : 0x87478de57078cf05a2d0a1faa4461abb4e42b62df0e513203edcb4cddb2f
+[+] Completed :  120000 [C] 14f6xBy1VEGk7msbhCBxm2ZxUmV44AzLAF [U] 1EPhCbpicTGwkqjzMrJbDYB44Bo2SpkMxW [3] 3PosuFmXMYxWMzrnRFVsyw98m2ehYRSMCX [bc] bc1q9qwjd68z297wx9zn58c2he76mwy6px99g5cv8e
+[+] Starting search for the subgroup : 0xb5ab99b8376e61ea690a3b69811fb3fd0a291427962563b6a0c356c8fec8
+[+] Completed :  90000 [C] 1FjP2Cid6H2ue3K9WgNmvXp5DYtRW7S1Rd [U] 1DpT8aBwQdkJYHNrNTmLhQpyCWqPTVJr95 [3] 32BT2zNGa4AjczTXZLvtiWhiJy5WAyxDmz [bc] bc1q5x2e6pqsq389p342fsvwxyh9damxwny2lnf8a7
+[+] Starting search for the subgroup : 0x8a6205d1353769023a186bf7375bdd09277857fb98b4d595994b40e56689
+[+] Completed :  120000 [C] 1E126e6iW4t3tyo5UNhDkz1VSosxr3M2ei [U] 12CSgRhcaBJufLVbmtFaFAjFK5xeZHfWJW [3] 3PHRQRLvncK8c7Rz5xfPsqrrikZKEiHSbU [bc] bc1q36dg69wmdpvs569sg3u9f2las32m0ncjlf5wsd
+[+] Starting search for the subgroup : 0x37167b4424c8ec5a58116b3b9e9966163cdd9bcbcff813f4351b9e15b744
+[+] Completed :  300000 [C] 1496uUWHi4YmSYqw6rkT2qhCVRuG9t9mLm [U] 1GPMxSBhY2ismsuq6xKsmj38G42kSHCU7J [3] 3HijqQbb3WYEzArGKeBoN2EVhAdVD2WXP2 [bc] bc1qyfc2y5s2j56mq70y4enlm7n2jhp65ed6506332
+[+] Starting search for the subgroup : 0x8c52f8afdce82b6ea6279c979f245023b5fe8167ce0483f2ce366856ade5
+[+] Completed :  110000 [C] 1CVFQAXsZmsJgjsUXnvna8hAUX2Hs58n4q [U] 1FEuLxSXiS7eP3E6wpWQsCR1D4vpzR6o18 [3] 31m26DsvDUD5Gpn75b4VUDusMbKjwmi4a7 [bc] bc1q0cqseugwr5qvtz837m8w9eamr0xk55fm399f6v
+[+] Starting search for the subgroup : 0x6d8009113e440c2c39903409f1b228959a6880d3f75d95b579e5050acce5
+[+] Completed :  150000 [C] 16UYnAuc6F8FsdnZKzJrrVVQg89WCvseUN [U] 1CcyENuxbYfrsjTHSWNL1RFyZBUDFvF6zj [3] 3KQs1spX2isrTVBeCd6r7Fb3L5VmvJVoci [bc] bc1q8s8xxvefws353mnsqg5kdk4n9d5w63zspu8xdz
+[+] Starting search for the subgroup : 0x1f71e35f0dc9f15d5a9940e5900db47bf202e850597d3de864ebe14395f9
+[+] Completed :  530000 [C] 1oCfxSa3sXg3jiiLWbZCvVk9f2SGnZBaR [U] 1DcZEbq6RnWxwwzMLrq8TXZMeaazXNsCt7 [3] 34GwDP8Ev8pcw9ZSzDct6yTtF7cp322Dft [bc] bc1qpz7wpy6vc4kg5zmvyhx2yyuvwt6nf4g398cqvk8
+[+] Starting search for the subgroup : 0x12d1e581bf3564fff7bb90a27d056838bb25448746d8ecb2c4467204a2c3
+[+] Completed :  890000 [C] 13nqzRNR5dJfJUTHapmiKRk2rZatdzthBB [U] 16oWriPod1TeXhixewAHJbN5jFbdfTB77b [3] 35ULGW9fnasrwLpb6soXyHXz1W16jBYo7E [bc] bc1qr6da6kfu79835fk94gm8k3267xgg2vdmma0ydz
+[+] Starting search for the subgroup : 0xf6cc243e88ac3a60eb92408b8f865624f1f541ba4b17f30188af1008751c
+[+] Completed :  60000 [C] 1ieGUfgfd3KSL5qgcLNNNacySzSjFADQx [U] 1QHWdvpSABJEhV134pr8rDDFQzf6WLYbf4 [3] 3AJZw54qiFPVmnNDnsmj48geL4AhgET29u [bc] bc1qqlsznjtqhlrsdeshj5gf3tymt5tmajam8yts0l8
+[+] Starting search for the subgroup : 0xdef75762b050d1c3b3ab1cd366eefee03e7810add6257acb089b4cc1b587
+[+] Completed :  70000 [C] 1DaihUbWd7Eedxde5cHmpD72gZ6qiKtZR4 [U] 14n3Xzszu6dTnqm55ZdmVo9Zy6tuvgarS4 [3] 3KaxhmcqvDsQYnpEqARsu4ekmDRmbB59n2 [bc] bc1q3gpqkdq4mn74mufhwl0dkfxnn4kp34w3encx5n
+```
