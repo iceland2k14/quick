@@ -77,7 +77,7 @@ At least 1 of the Output pubkeys with have the reduced bit range specified in th
 [+] Completed in 0.24 sec
 ```
 
-# Small Subgroup Privatekey Search
+# Small Subgroup Privatekey Search : BTC
 This script Search for Privatekey created in a small subgroup starting from any high bit random number.  
 It searches offline for btc address (4 types [C][U][3][bc]) for collision from a input address file.  
 ```
@@ -107,4 +107,26 @@ It searches offline for btc address (4 types [C][U][3][bc]) for collision from a
 [+] Completed :  60000 [C] 1ieGUfgfd3KSL5qgcLNNNacySzSjFADQx [U] 1QHWdvpSABJEhV134pr8rDDFQzf6WLYbf4 [3] 3AJZw54qiFPVmnNDnsmj48geL4AhgET29u [bc] bc1qqlsznjtqhlrsdeshj5gf3tymt5tmajam8yts0l8
 [+] Starting search for the subgroup : 0xdef75762b050d1c3b3ab1cd366eefee03e7810add6257acb089b4cc1b587
 [+] Completed :  70000 [C] 1DaihUbWd7Eedxde5cHmpD72gZ6qiKtZR4 [U] 14n3Xzszu6dTnqm55ZdmVo9Zy6tuvgarS4 [3] 3KaxhmcqvDsQYnpEqARsu4ekmDRmbB59n2 [bc] bc1q3gpqkdq4mn74mufhwl0dkfxnn4kp34w3encx5n
+```
+
+# Small Subgroup Privatekey Search : ETH
+This script Search for Privatekey created in a small subgroup starting from any high bit random number.  
+It searches offline for ETH address for collision from a input address file.  
+```
+(base) C:\anaconda3>python small_subgroup_ETH.py
+[+] Program Starting in ETH mode... Please Wait
+216 ETH address found in the file. Ignored 0
+
+[+] Starting search for the subgroup : 0x7ba4114643f06ac50129c191b80b1033a2f014aff020ed3f3a81c3c5a49f     [239 bit]
+[+] Completed :  780000 [ETH-1] 0xbf8d47bbf4530f17bf1948cbd3d2a7ec5bf39453
+[+] Starting search for the subgroup : 0x1610cab1f52307e0fca13c37070463d4653b4107e0d5efe67d3c8822817e     [237 bit]
+[+] Completed :  4560000 [ETH-1] 0xf4f6072fe79bbf7c5e137022eef52fce7ad6da9c
+[+] Starting search for the subgroup : 0x61d5e16b421f18e9b5bfeb8ff27028713e03a51680ce726e1fac14ea6010     [239 bit]
+[+] Completed :  1020000 [ETH-1] 0xc856e69e4ce158cb90d703a6c03d22514614a5fd
+[+] Starting search for the subgroup : 0xecbf9efad9e2f4e20cb2286e1e59d0288d44939110b1fc2d5874345942fc     [240 bit]
+[+] Completed :  420000 [ETH-1] 0x310039396783c20b6e78ef9d0ba33c34e6f4e1f8
+[+] Starting search for the subgroup : 0x4e1d77af27008404c9b1f6c8266f4a7fcf953d0d6b37982326cae27fd4a0     [239 bit]
+[+] Completed :  1260000 [ETH-1] 0x59d6729d98176e756d0f76935c40ad7d5dfe56ce
+[+] Starting search for the subgroup : 0xf9f663b9a96a08d0f9d9a34b23e0e8599fe74d2b0bd86c678e27a25dbd2     [236 bit]
+[+] Completed :  3480000 [ETH-1] 0x3e000aef758b303644cf0d91fc4e1d926248a18e
 ```
