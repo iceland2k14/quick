@@ -33,14 +33,17 @@ else:
     sys.exit()
 
 ice.privatekey_to_address.argtypes = [ctypes.c_int, ctypes.c_bool, ctypes.c_char_p]  # 012,comp,pvk
-ice.privatekey_to_address.restype = ctypes.c_char_p
+ice.privatekey_to_address.restype = ctypes.c_void_p
+ice.free_memory.argtypes = [ctypes.c_void_p] # pointer
 ice.init_secp256_lib()
 
 def privatekey_to_address(addr_type, iscompressed, pvk_int):
     # type = 0 [p2pkh],  1 [p2sh],  2 [bech32]
     pass_int_value = hex(pvk_int)[2:].encode('utf8')
     res = ice.privatekey_to_address(addr_type, iscompressed, pass_int_value)
-    return res.decode('utf8')
+    addr = (ctypes.cast(res, ctypes.c_char_p).value).decode('utf8')
+    ice.free_memory(res)
+    return addr
 
 ###############################################################################
 btc_address_filename = 'btc_address.txt'

@@ -27,20 +27,22 @@ elif platform.system().lower().startswith('lin'):
         ice = ctypes.CDLL(pathdll)
     else:
         print('File {} not found'.format(dllfile))
-    print('File ice_secp256k1.so Not yet Ready for ETH'); sys.exit()
     
 else:
     print('[-] Unsupported Platform currently for ctypes dll method. Only [Windows and Linux] is working')
     sys.exit()
 
-ice.privatekey_to_ETH_address.argtypes = [ctypes.c_char_p] # pvk_int
-ice.privatekey_to_ETH_address.restype = ctypes.c_char_p
+ice.privatekey_to_ETH_address.argtypes = [ctypes.c_char_p] # pvk
+ice.privatekey_to_ETH_address.restype = ctypes.c_void_p
+ice.free_memory.argtypes = [ctypes.c_void_p] # pointer
 ice.init_secp256_lib()
 
 def privatekey_to_ETH_address(pvk_int):
     pass_int_value = hex(pvk_int)[2:].encode('utf8')
     res = ice.privatekey_to_ETH_address(pass_int_value)
-    return '0x'+res.decode('utf8')
+    addr = (ctypes.cast(res, ctypes.c_char_p).value).decode('utf8')
+    ice.free_memory(res)
+    return '0x'+addr
 
 ###############################################################################
 eth_address_filename = 'eth_address.txt'
@@ -57,7 +59,7 @@ lmda2 = 0xac9c52b33fa3cf1f5ad9e3fd77ed9ba4a880b9fc8ec739c2e0cfc810b51283ce      
 ###############################################################################
 
 while True:
-    a_largebit_number = random.SystemRandom().randint(2**220, 2**240)
+    a_largebit_number = random.SystemRandom().randint(2**230, 2**242)
     # k = gmpy2.next_prime(a_largebit_number)    # factor1 * factor2 * factor3
     k = a_largebit_number
     print('\n[+] Starting search for the subgroup : {}     [{} bit]'.format(hex(k),len(bin(k)[2:])))
