@@ -11,17 +11,15 @@ import sys
 import secp256k1 as ice
 
 #=========================================================================
-
-pubkey = sys.argv[1]
-nbits = int(sys.argv[2])
-out_file = sys.argv[3]
-
 if len(sys.argv) > 4 or len(sys.argv) < 4:
     print('[+] Program Usage.... ')
     print(f'python {sys.argv[0]} <original_pubkey> <bit_reduction> <output_file_name>\n')
     print(f'Example to create a text File:\n\npython {sys.argv[0]} 02CEB6CBBCDBDF5EF7150682150F4CE2C6F4807B349827DCDBDD1F2EFA885A2630 15 keydiv_bit5.txt\n')
     sys.exit()
-    
+
+pubkey = sys.argv[1]
+nbits = int(sys.argv[2])
+out_file = sys.argv[3]
 #=========================================================================
 
 N = 115792089237316195423570985008687907852837564279074904382605163141518161494337
